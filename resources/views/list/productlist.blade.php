@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/css/fakeLoader.css">
     <link rel="stylesheet" href="/css/animate.css">
     <link rel="stylesheet" href="/css/style.css">
-
+    <link rel="stylesheet" href="/css/page.css">
     <link rel="shortcut icon" href="/img/favicon.png">
 
 </head>
@@ -225,7 +225,7 @@
                     </a>
                 </div>
                 <div class="col s4">
-                    <a href="login.html" class="button-link">
+                    <a href="http://pass.1810shop.com/login" class="button-link">
                         <div class="menu-link">
                             <div class="icon">
                                 <i class="fa fa-sign-in"></i>
@@ -379,79 +379,19 @@
             </select>
         </div>
         <div class="row">
+            @foreach ($a as $v)
             <div class="col s6">
-                <div class="content">
-                    <img src="/img/product-new1.png" alt="">
-                    <h6><a href="">Fashion Men's</a></h6>
-                    <div class="price">
-                        $20 <span>$28</span>
+                    <div class="content">
+                        <img src="/img/zodgEBLFyG7gRSqu8Gc8nsURUQvI3fLgKJzJLEqC.jpeg" alt="">
+                        <h6><a href="/goodsInfo/{{$v->goods_id}}">{{$v->goods_name}}</a></h6>
+                        <div class="price">
+                            {{$v->self_price}}<span>$28</span>
+                        </div>
+                        <button class="btn button-default btn" goods_id="{{$v->goods_id}}" >ADD TO CART</button>
                     </div>
-                    <button class="btn button-default">ADD TO CART</button>
-                </div>
             </div>
-            <div class="col s6">
-                <div class="content">
-                    <img src="/img/product-new2.png" alt="">
-                    <h6><a href="">Fashion Men's</a></h6>
-                    <div class="price">
-                        $20 <span>$28</span>
-                    </div>
-                    <button class="btn button-default">ADD TO CART</button>
-                </div>
-            </div>
-        </div>
-        <div class="row margin-bottom">
-            <div class="col s6">
-                <div class="content">
-                    <img src="/img/product-new3.png" alt="">
-                    <h6><a href="">Fashion Men's</a></h6>
-                    <div class="price">
-                        $20 <span>$28</span>
-                    </div>
-                    <button class="btn button-default">ADD TO CART</button>
-                </div>
-            </div>
-            <div class="col s6">
-                <div class="content">
-                    <img src="/img/product-new4.png" alt="">
-                    <h6><a href="">Fashion Men's</a></h6>
-                    <div class="price">
-                        $20 <span>$28</span>
-                    </div>
-                    <button class="btn button-default">ADD TO CART</button>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s6">
-                <div class="content">
-                    <img src="/img/product-new3.png" alt="">
-                    <h6><a href="">Fashion Men's</a></h6>
-                    <div class="price">
-                        $20 <span>$28</span>
-                    </div>
-                    <button class="btn button-default">ADD TO CART</button>
-                </div>
-            </div>
-            <div class="col s6">
-                <div class="content">
-                    <img src="/img/product-new4.png" alt="">
-                    <h6><a href="">Fashion Men's</a></h6>
-                    <div class="price">
-                        $20 <span>$28</span>
-                    </div>
-                    <button class="btn button-default">ADD TO CART</button>
-                </div>
-            </div>
-        </div>
-        <div class="pagination-product">
-            <ul>
-                <li class="active">1</li>
-                <li><a href="">2</a></li>
-                <li><a href="">3</a></li>
-                <li><a href="">4</a></li>
-                <li><a href="">5</a></li>
-            </ul>
+            @endforeach
+            {{$a->links()}}
         </div>
     </div>
 </div>
@@ -490,6 +430,16 @@
 <script src="/js/fakeLoader.min.js"></script>
 <script src="/js/animatedModal.min.js"></script>
 <script src="/js/main.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+        $('.btn').click(function(){
+            var goods_id = $(this).attr('goods_id');
+            alert(goods_id);
+        })
+    })
+</script>
 
 </body>
 </html>

@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/css/fakeLoader.css">
     <link rel="stylesheet" href="/css/animate.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/layui/css/layui.css">
 
     <link rel="shortcut icon" href="/img/favicon.png">
 
@@ -371,17 +372,17 @@
         </div>
         <div class="register">
             <div class="row">
-                <form class="col s12">
+                <form class="col s12" class="layui-form">
                     <div class="input-field">
-                        <input type="text" class="validate" placeholder="NAME" required>
+                        <input type="text" class="validate" id="uname" name="uname" placeholder="NAME" required>
                     </div>
                     <div class="input-field">
-                        <input type="email" placeholder="EMAIL" class="validate" required>
+                        <input type="email" id="email" placeholder="EMAIL" class="validate" required|email>
                     </div>
                     <div class="input-field">
-                        <input type="password" placeholder="PASSWORD" class="validate" required>
+                        <input type="password" id="pass" placeholder="PASSWORD" class="validate" required>
                     </div>
-                    <div class="btn button-default">REGISTER</div>
+                    <div class="btn button-default" class="layui-btn" lay-submit lay-filter="*" id="sub">注册</div>
                 </form>
             </div>
         </div>
@@ -422,6 +423,61 @@
 <script src="/js/fakeLoader.min.js"></script>
 <script src="/js/animatedModal.min.js"></script>
 <script src="/js/main.js"></script>
+<script src="/layui/layui.js"></script>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+    layui.use(['layer','form'], function(){
+        var form = layui.form;
+        var layer = layui.layer;
+
+        // form.verify({
+        //     uname: function (value,item) { //value：表单的值、item：表单的DOM对象
+        //         if (/^\d+\d+\d$/.test(value)) {
+        //             return '用户名不能全为数字';
+        //         }
+        //     }
+        // })
+        $('#sub').click(function(){
+            // alert('123');
+            var name = $('#uname').val();
+            var email = $('#email').val();
+            var pwd = $('#pass').val();
+
+            // console.log(name);
+            if(name==''){
+                return layer.msg('用户名不能为空',{icon:2});
+            }else if(email != RegExp("^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$").test()){
+                return layer.msg('邮箱格式不正确',{icon:2});
+            }
+
+
+            $.post(
+                "http://www.1810shop.com/regadd",
+                {name:name,email:email,pass:pwd},
+                function(res){
+                    console.log(res);
+                    // if (res==1) {
+                    //     alert('登陆失败');
+                    // }else{
+                    //     alert('登陆成功');
+                    //     localStorage.setItem('token',res.data.token);
+                    //     localStorage.setItem('id',res.data.id);
+                    //     // $r = localStorage.getItem('id')
+                    //     // console.log($r);
+                    //     location.href = 'http://127.0.0.1:8849/h5/login/new.html?token='+localStorage.getItem('token')+"&id="+localStorage.getItem('id');
+                    // }
+                }
+            );
+        })
+
+        })
+        //各种基于事件的操作，下面会有进一步介绍
+
+</script>
+
 
 </body>
 </html>
+
+

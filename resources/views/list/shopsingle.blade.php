@@ -366,11 +366,13 @@
 <div class="pages section">
     <div class="container">
         <div class="shop-single">
-            <img src="/img/shop-single.png" alt="">
-            <h5>Fashion Men's</h5>
-            <div class="price">$20 <span>$28</span></div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam eaque in non delectus, error iste veniam commodi mollitia, officia possimus, repellendus maiores doloribus provident. Itaque, ab perferendis nemo tempore! Accusamus</p>
-            <button type="button" class="btn button-default">ADD TO CART</button>
+            <img src="/img/zodgEBLFyG7gRSqu8Gc8nsURUQvI3fLgKJzJLEqC.jpeg" alt="">
+            <input type="hidden" id="goods_id" goods_id="{{$b->goods_id}}">
+            <h5>{{$b->goods_name}}</h5>
+            <div class="price">{{$b->self_price}}<span>$28</span></div>
+            <p>{{$b->goods_desc}}</p>
+            <input type="text" class="spinnerExample" />
+            <button type="button" class="btn button-default btn">ADD TO CART</button>
         </div>
         <div class="review">
             <h5>1 reviews</h5>
@@ -388,32 +390,7 @@
                 </div>
             </div>
         </div>
-        <div class="review-form">
-            <div class="review-head">
-                <h5>Post Review in Below</h5>
-                <p>Lorem ipsum dolor sit amet consectetur*</p>
-            </div>
-            <div class="row">
-                <form class="col s12 form-details">
-                    <div class="input-field">
-                        <input type="text" required class="validate" placeholder="NAME">
-                    </div>
-                    <div class="input-field">
-                        <input type="email" class="validate" placeholder="EMAIL" required>
-                    </div>
-                    <div class="input-field">
-                        <input type="text" class="validate" placeholder="SUBJECT" required>
-                    </div>
-                    <div class="input-field">
-                        <textarea name="textarea-message" id="textarea1" cols="30" rows="10" class="materialize-textarea" class="validate" placeholder="YOUR REVIEW"></textarea>
-                    </div>
-                    <div class="form-button">
-                        <div class="btn button-default">POST REVIEW</div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+
 </div>
 <!-- end shop single -->
 
@@ -449,6 +426,46 @@
 <script src="/js/fakeLoader.min.js"></script>
 <script src="/js/animatedModal.min.js"></script>
 <script src="/js/main.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
 
 </body>
 </html>
+<script src="/js/jquery.spinner.js"></script>
+<script>
+    $('.spinnerExample').spinner({});
+</script>
+<script type="text/javascript">
+    $(function(){
+
+        // $.ajaxSetup({
+        //     headers: {
+        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //     }
+        // });
+        $('.btn').click(function() {
+            alert('123');
+            var goods_id = $('#goods_id').attr('goods_id');
+            var goods_num = $('.spinnerExample').val();
+            console.log(goods_id);
+            console.log(goods_num);
+            if (goods_num == '') {
+                return false;
+            }
+            // console.log(goods_num);
+            // console.log(goods_id);
+            $.post(
+                "http://www.1810shop.com/cart",
+                {goods_id: goods_id, goods_num: goods_num},
+                function (res) {
+
+                    // if ('res' == 2) {
+                    //     alert('添加失败');
+                    // } else {
+                    //     alert('添加成功');
+                    // }
+                    console.log(res);
+                }
+            );
+        })
+    })
+</script>

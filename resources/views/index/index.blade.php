@@ -47,7 +47,7 @@
         <li><a href="setting.html"><i class="fa fa-cog"></i>Settings</a></li>
         <li><a href="about-us.html"><i class="fa fa-user"></i>About Us</a></li>
         <li><a href="contact.html"><i class="fa fa-envelope-o"></i>Contact Us</a></li>
-        <li><a href="{{url('/login')}}"><i class="fa fa-sign-in"></i>Login</a></li>
+        <li><a href="http://pass.1810shop.com/login"><i class="fa fa-sign-in"></i>Login</a></li>
         <li><a href="register.html"><i class="fa fa-user-plus"></i>Register</a></li>
     </ul>
 </div>
@@ -460,49 +460,21 @@
             <div class="divider-bottom"></div>
         </div>
         <div class="row">
+            @foreach ($a as $v)
             <div class="col s6">
                 <div class="content">
-                    <img src="img/product-new1.png" alt="">
-                    <h6><a href="">Fashion Men's</a></h6>
+                    <img src="img/TrbDm4DdV1ip1AQpQnMTzeyXIM6yM5sjjSuk5CWN.jpeg" alt="">
+                    <h6><a href="">{{$v->goods_name}}</a></h6>
                     <div class="price">
-                        $20 <span>$28</span>
+                        {{$v->self_price}} <span>$20</span>
                     </div>
                     <button class="btn button-default">ADD TO CART</button>
                 </div>
+
             </div>
-            <div class="col s6">
-                <div class="content">
-                    <img src="img/product-new2.png" alt="">
-                    <h6><a href="">Fashion Men's</a></h6>
-                    <div class="price">
-                        $20 <span>$28</span>
-                    </div>
-                    <button class="btn button-default">ADD TO CART</button>
-                </div>
-            </div>
+            @endforeach
         </div>
-        <div class="row margin-bottom">
-            <div class="col s6">
-                <div class="content">
-                    <img src="img/product-new3.png" alt="">
-                    <h6><a href="">Fashion Men's</a></h6>
-                    <div class="price">
-                        $20 <span>$28</span>
-                    </div>
-                    <button class="btn button-default">ADD TO CART</button>
-                </div>
-            </div>
-            <div class="col s6">
-                <div class="content">
-                    <img src="img/product-new4.png" alt="">
-                    <h6><a href="">Fashion Men's</a></h6>
-                    <div class="price">
-                        $20 <span>$28</span>
-                    </div>
-                    <button class="btn button-default">ADD TO CART</button>
-                </div>
-            </div>
-        </div>
+
     </div>
 </div>
 <!-- end product -->
@@ -528,57 +500,19 @@
             <div class="divider-bottom"></div>
         </div>
         <div class="row">
-            <div class="col s6">
-                <div class="content">
-                    <img src="img/product-new1.png" alt="">
-                    <h6><a href="">Fashion Men's</a></h6>
-                    <div class="price">
-                        $20 <span>$28</span>
+            @foreach ($b as $v)
+                <div class="col s6">
+                    <div class="content">
+                        <img src="img/zodgEBLFyG7gRSqu8Gc8nsURUQvI3fLgKJzJLEqC.jpeg" alt="">
+                        <h6><a href="">{{$v->goods_name}}</a></h6>
+                        <div class="price">
+                            {{$v->self_price}} <span>$20</span>
+                        </div>
+                        <button class="btn button-default">ADD TO CART</button>
                     </div>
-                    <button class="btn button-default">ADD TO CART</button>
+
                 </div>
-            </div>
-            <div class="col s6">
-                <div class="content">
-                    <img src="img/product-new2.png" alt="">
-                    <h6><a href="">Fashion Men's</a></h6>
-                    <div class="price">
-                        $20 <span>$28</span>
-                    </div>
-                    <button class="btn button-default">ADD TO CART</button>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s6">
-                <div class="content">
-                    <img src="img/product-new3.png" alt="">
-                    <h6><a href="">Fashion Men's</a></h6>
-                    <div class="price">
-                        $20 <span>$28</span>
-                    </div>
-                    <button class="btn button-default">ADD TO CART</button>
-                </div>
-            </div>
-            <div class="col s6">
-                <div class="content">
-                    <img src="img/product-new4.png" alt="">
-                    <h6><a href="">Fashion Men's</a></h6>
-                    <div class="price">
-                        $20 <span>$28</span>
-                    </div>
-                    <button class="btn button-default">ADD TO CART</button>
-                </div>
-            </div>
-        </div>
-        <div class="pagination-product">
-            <ul>
-                <li class="active">1</li>
-                <li><a href="">2</a></li>
-                <li><a href="">3</a></li>
-                <li><a href="">4</a></li>
-                <li><a href="">5</a></li>
-            </ul>
+            @endforeach
         </div>
     </div>
 </div>
