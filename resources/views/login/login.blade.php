@@ -371,16 +371,16 @@
         </div>
         <div class="login">
             <div class="row">
-                <form class="col s12">
+                {{--<form class="col s12">--}}
                     <div class="input-field">
-                        <input type="text" class="validate" placeholder="USERNAME" required>
+                        <input type="text" class="validate" id="email" placeholder="USERNAME" required>
                     </div>
                     <div class="input-field">
-                        <input type="password" class="validate" placeholder="PASSWORD" required>
+                        <input type="password" class="validate" id="pwd" placeholder="PASSWORD" required>
                     </div>
                     <a href=""><h6>Forgot Password ?</h6></a>
-                    <a href="" class="btn button-default">LOGIN</a>
-                </form>
+                    <button id ="btn" class="btn button-default">LOGIN</button>
+                {{--</form>--}}
             </div>
         </div>
     </div>
@@ -419,6 +419,29 @@
 <script src="/js/fakeLoader.min.js"></script>
 <script src="/js/animatedModal.min.js"></script>
 <script src="/js/main.js"></script>
+<script src="js/main.js"></script>
 
+<script type="text/javascript">
+    $(function(){
+        $('#but').click(function(){
+            // alert(123);
+            var email = $('#email').val();
+            var pwd = $('#pwd').val();
+
+            $.post(
+                "https://api.wzitao.com/api/login",
+                {email:email,pwd:pwd},
+                function(res){
+                    console.log(res);
+                    // if ('res'==2) {
+                    // 	alert('注册失败');
+                    // 	}else{
+                    // 	alert('注册成功');
+                    // }
+                }
+            );
+        })
+    })
+</script>
 </body>
 </html>

@@ -10,6 +10,7 @@ class IndexController extends Controller
     //
     public function index(){
 //        echo '123';
+//        echo phpinfo();die;
         $a = GoodsModel::where(['is_new' => 2])->get();
 
         $b = GoodsModel::where(['is_up'=>2])->get();
